@@ -14,4 +14,11 @@ class TestRockPaperScissors < Test::Unit::TestCase
   def test_R_looses_against_P
     assert_equal ['b','P'],rps_game_winner([['a','R'],['b','P']])
   end
+  def test_R_wins_over_S
+    assert_equal ['a','R'],rps_game_winner([['a','R'],['b','S']])
+  end
+  def test_S_looses_against_R
+    assert_equal ['b','R'],rps_game_winner([['a','S'],['b','R']])
+  end
+
 end
