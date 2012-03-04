@@ -8,6 +8,11 @@ class TestRockPaperScissors < Test::Unit::TestCase
       rps_game_winner([])}
   end
 
+  def test_raise_NoSuchStrategyError
+    assert_raise(NoSuchStrategyError) {
+      rps_game_winner([['a','Q'],['b','P']])}
+  end
+
   def test_P_wins_over_R
     assert_equal ['a','P'],rps_game_winner([['a','P'],['b','R']])
   end
@@ -19,6 +24,12 @@ class TestRockPaperScissors < Test::Unit::TestCase
   end
   def test_S_looses_against_R
     assert_equal ['b','R'],rps_game_winner([['a','S'],['b','R']])
+  end
+
+  def test_first_wins_if_same_strat
+    assert_equal ['a','R'],rps_game_winner([['a','R'],['b','R']])
+    assert_equal ['a','S'],rps_game_winner([['a','S'],['b','S']])
+    assert_equal ['a','P'],rps_game_winner([['a','P'],['b','P']])
   end
 
 end

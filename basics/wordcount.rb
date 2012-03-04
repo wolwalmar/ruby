@@ -9,3 +9,11 @@ def count_words(string)
     Hash[words.uniq.map {|word| [word,words.count(word)]}]
   end
 end
+
+def palindrome?(string)
+	prepare(string) == prepare(string).reverse
+end
+
+def prepare(string)
+	string.downcase.gsub(/\W/,'')
+end

@@ -40,5 +40,24 @@ class TestAss < Test::Unit::TestCase
     assert_equal 0,count_words(t).size
     end
 
+  def test_palindrome_empty_string
+    assert palindrome?("")
+  end
+
+  def test_palindrome_one_word
+    assert palindrome?("Otto")
+  end
+
+  def test_palindrome_one_word_negative
+    assert ! palindrome?("mus")
+  end
+
+  def test_multiple_words_with_special_chars
+      assert palindrome?("Madam, I'm Adam!")
+  end
+
+  def test_multiple_words_with_special_chars_negative
+      assert ! palindrome?("Madam, you're Adam!")
+  end
 end
 

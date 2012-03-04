@@ -13,10 +13,9 @@ def rps_game_winner(game)
     "PP" => -1,
     "SS" => -1,
     "RR" => -1 }
-  #raise NoSuchStrategyError unless rules.include?(game[0][1]+game
-  game.sort { |a,b| rules[a[1]+b[1]] }[0]
+
+  raise NoSuchStrategyError unless rules.has_key?(stratPair(game[0],game[1]))
+  game.sort { |a,b| rules[stratPair(a,b)] }[0]
 end
 
-def stratPair(rules)
-
-end
+def stratPair(a,b) a[1]+b[1] end
